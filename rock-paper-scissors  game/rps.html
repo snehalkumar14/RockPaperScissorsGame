@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<style>
+    body{
+        background-color: black;
+
+    }
+    .heading{
+        text-align: center;
+        font-size: 55px;
+        text-decoration: solid;
+        color: crimson;
+    }
+    .sec-heading{
+        font-size: 30px;
+        font-family: cursive;
+        color: aqua;
+        margin-left: 15px;
+    }
+    .main-buttons{
+        margin-left: 15px;
+        margin-top: 40px;
+    }
+    .rock{
+        padding-left: 70px;
+        padding-right: 80px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        background-color: black;
+        margin-right: 30px;
+        background-image: url("rock.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+
+    }
+    .paper{
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        margin-right: 30px;
+        background-image: url("paper.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+
+    }
+    .scissors{
+        padding-left: 70px;
+        padding-right: 70px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        background-color: black;
+        margin-right: 30px;
+        background-image: url("scissors.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+   /* .score-display{
+        text-align: justify;
+        color: yellow;
+        margin-left: 550px;
+    }*/
+    .status{
+        color: gold;
+        float: right;
+        margin-right: 100px;
+        font-family:fantasy;
+        font-size: 40px;
+    }
+    .score{
+        color: goldenrod;
+        /*float: right;*/
+        text-align: right;
+        margin-right: 100px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 25px;
+        
+    }
+    .resetButton{
+        text-align: center;
+        margin-top: 50px;
+    }
+    .resetScore{
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        font-size: 30px;
+        border-radius: 20px;
+        font-family: cursive;
+        color:orangered ;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        
+    }
+
+  
+</style>
+<script>
+    
+    let wins=0,looses=0,tie=0;
+    function rockResult(){
+        let computerMove=Math.floor(Math.random()*3);
+        if (computerMove == 0){
+            tie++;;
+            document.querySelector('.status').innerHTML=`
+            computer move is rock so tie 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+            
+        }
+        else if (computerMove == 1){
+            looses++;
+            document.querySelector('.status').innerHTML=`
+            computer move is paper you loose 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie} 
+            `;
+        }
+        else{
+            wins++
+            document.querySelector('.status').innerHTML=`
+            computer move is scissors so you win 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+            
+        }
+
+    }
+    function paperResult(){
+        let computerMove=Math.floor(Math.random()*3);
+        if (computerMove == 1){
+            tie++;
+            document.querySelector('.status').innerHTML=`
+            computer move is paper so tie 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+        else if (computerMove == 2){
+            looses++;
+            document.querySelector('.status').innerHTML=`
+            computer move is scissors you loose 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+        else{
+            wins++
+            document.querySelector('.status').innerHTML=`
+            computer move is rock so you win 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+
+    }
+    function scissorsResult(){
+        let computerMove=Math.floor(Math.random()*3);
+        if (computerMove == 2){
+            tie++;
+            document.querySelector('.status').innerHTML=`
+            computer move is scissors so tie 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+        else if (computerMove == 0){
+            looses++;
+            document.querySelector('.status').innerHTML=`
+            computer move is rock you loose 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+        else{
+            wins++;
+            document.querySelector('.status').innerHTML=`
+            computer move is paper so you win 
+            `;
+            document.querySelector('.score').innerHTML=`
+            your score is  wins -- ${wins}, looses -- ${looses}, tie -- ${tie}, total games -- ${wins+looses+tie}
+            `;
+        }
+
+    }
+   /* function Status(){
+        score=`wins=${wins} looses=${looses} tie=${tie} total games played=${wins+looses+tie}`;
+    }*/
+    function resetScore(){
+        wins=0;
+        looses=0;
+        tie=0;
+        document.querySelector('.status').innerHTML=`score reseted
+        `;
+        document.querySelector('.score').innerHTML=`your score is wins--${wins},looses--${looses},tie--${tie},total games played--${wins+looses+tie}
+        `;
+    }
+    
+</script>
+<html>
+    <head><title>rock paper scissors game</title></head>
+    <body>
+        <div><h1 class="heading">Rock Paper Scissors</h1></div>
+        <div><p><h2 class="sec-heading"> Select Any Option To Start Game </h2></p></div>
+        <div class="main-buttons">
+            <button class="rock" onclick="rockResult();"></button>
+            <button class="paper" onclick="paperResult();"></button>
+            <button class="scissors" onclick="scissorsResult();"></button>
+        <!--</div>
+        <div class="score-display">-->
+            <p class="status"></p>
+            <p class="score"></p>
+        </div>
+        <div class="resetButton">
+            <button class="resetScore" onclick="resetScore();">Reset</button>
+        </div>
+    </body>
+</html>
