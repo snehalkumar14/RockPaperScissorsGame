@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<script>
+    Todolist=[]
+    function rendertext(){
+    maintext=''
+    for(let i=0;i<=Todolist.length -1;i++){
+        html=`<div>${Todolist[i].name}</div>
+        <div> ${Todolist[i].date}</div>
+        <button onclick="
+            Todolist.splice(${i},1);
+            rendertext();
+            class="delete-button"
+        ">Delete</button>
+            `;
+        maintext=maintext+html;
+    }
+  
+    document.querySelector('.display-text').innerHTML = maintext;
+    }
+    function addTodo() {
+        let todo_name=document.querySelector('.name-input');
+        let todo_date=document.querySelector('.date-input');
+        let Name=todo_name.value;
+        let Date=todo_date.value;
+        Todolist.push({
+            name:Name,
+            date:Date
+        });
+        document.querySelector('.typing-text').innerHTML=` `
+        todo_name.value='';
+        todo_date.value='';
+        rendertext();
+    }
+    function button(event){
+        if (event.key=='Enter'){
+            addTodo();
+        }
+        else{
+            document.querySelector('.typing-text').innerHTML=`typing.....`
+        }
+    }
+    
+
+</script>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+    }
+    #main-heading{
+        text-align: center;
+    }
+    .main-heading{
+        font-size: 60px;
+        color: white;
+        font-family:monospace;
+    }
+    .name-input{
+        margin-left: 70px;
+        background-color: lightgrey;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .date-input{
+        margin-left: 20px;
+        background-color: lightgrey;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .first-add-button{
+        margin-left: 20px;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 30px;
+        background-color: lightgreen;
+        color: black;
+        margin-bottom: 20px;a
+    }
+    .typing-text{
+        color: red;
+        margin-left: 70px;
+    }
+    .display-text{
+        display: grid;
+        grid-template-columns: 227px 120px 90px;
+        color: white;
+        margin-left: 70px;
+        column-gap: 25px;
+        row-gap: 20px;
+    }
+</style>
+<html>
+    <head>
+        <title>todo list</title>
+    </head>
+    <body>
+        <div id="main-heading">
+            <h1 class="main-heading">TODO list</h1>
+        </div>
+        <div id="Todo-box">
+            <input  placeholder="Todo name" class="name-input" onkeydown="button(event)">
+            <input type="date" class="date-input" >
+            <button class="first-add-button" onclick="addTodo()">Add</button>
+            <p class="typing-text"></p>
+            <div class="display-text"></div>
+        </div>
+    </body>
+</html>
